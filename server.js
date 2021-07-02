@@ -30,7 +30,7 @@ const app = express();
 // }
 
 const corsOptions = {
-    origin: 'https://10.110.0.3:3007',
+    origin: 'https://127.0.0.1:3007',
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
