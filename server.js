@@ -24,7 +24,7 @@ const app = express();
 let corsOptions = null;
 if (process.env.NODE_ENV === 'production') {
     const corsOptions = {
-        origin: 'http://localhost',
+        origin: 'http://10.110.0.3',
         optionsSuccessStatus: 200
     };
 }
