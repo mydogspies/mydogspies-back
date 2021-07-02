@@ -21,14 +21,19 @@ const status = require('./routes/status');
 const app = express();
 
 // cors
-if (process.env.NODE_ENV === 'production') {
-    const corsOptions = {
-        origin: 'http://localhost:3007',
-        optionsSuccessStatus: 200
-    };
-    app.use(cors(corsOptions));
-}
+// if (process.env.NODE_ENV === 'production') {
+//     const corsOptions = {
+//         origin: 'http://localhost:3007',
+//         optionsSuccessStatus: 200
+//     };
+//     app.use(cors(corsOptions));
+// }
 
+const corsOptions = {
+    origin: 'http://10.110.0.3:3007',
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 // define body parser
 app.use(express.json());
