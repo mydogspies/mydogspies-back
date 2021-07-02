@@ -23,9 +23,8 @@ const app = express();
 // cors
 let corsOptions = null;
 if (process.env.NODE_ENV === 'production') {
-    console.log("Server cors mode set!".blue)
     const corsOptions = {
-        origin: 'http://localhost:3007',
+        origin: 'http://localhost',
         optionsSuccessStatus: 200
     };
 }
