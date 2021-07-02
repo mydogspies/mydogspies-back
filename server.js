@@ -23,7 +23,7 @@ const app = express();
 // cors
 if (process.env.NODE_ENV === 'production') {
     const corsOptions = {
-        origin: 'https://10.110.0.3',
+        origin: 'https://localhost:5011',
         optionsSuccessStatus: 200
     };
     app.use(cors(corsOptions));
