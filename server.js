@@ -21,13 +21,30 @@ const status = require('./routes/status');
 const app = express();
 
 // cors
-if (process.env.NODE_ENV === 'production') {
-    const corsOptions = {
-        origin: 'https://localhost:5011',
-        optionsSuccessStatus: 200
-    };
-    app.use(cors(corsOptions));
-}
+// if (process.env.NODE_ENV === 'production') {
+//     const corsOptions = {
+//         origin: 'https://localhost:5011',
+//         optionsSuccessStatus: 200
+//     };
+//     app.use(cors(corsOptions));
+// }
+
+const allowedOrigins = ["http://localhost:5011", "http://localhost:3007"];
+
+app.use(
+    cors({
+        origin: function(origin, callback) {
+            if (!origin) return callback(null, true);
+            if (allowedOrigins.indexOf(origin) === -1) {
+                var msg =
+                    "The CORS policy for this site does not " +
+                    "allow access from the specified Origin.";
+                return callback(new Error(msg), false);
+            }
+            return callback(null, true);
+        }
+    })
+);
 
 // define body parser
 app.use(express.json());
