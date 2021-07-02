@@ -23,7 +23,7 @@ const app = express();
 // cors
 if (process.env.NODE_ENV === 'production') {
     const corsOptions = {
-        origin: true,
+        origin: '*',
         optionsSuccessStatus: 200
     };
     app.use(cors(corsOptions));
