@@ -24,11 +24,19 @@ const app = express();
 let corsOptions = null;
 if (process.env.NODE_ENV === 'production') {
     const corsOptions = {
-        origin: 'http://127.0.0.1',
+        origin: 'http://10.110.0.3',
         optionsSuccessStatus: 200
     };
 }
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 // define body parser
 app.use(express.json());
