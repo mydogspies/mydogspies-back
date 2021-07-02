@@ -23,7 +23,7 @@ const app = express();
 // cors
 if (process.env.NODE_ENV === 'production') {
     const corsOptions = {
-        origin: 'http://mydogspies.com',
+        origin: true,
         optionsSuccessStatus: 200
     };
     app.use(cors(corsOptions));
