@@ -21,14 +21,16 @@ const status = require('./routes/status');
 const app = express();
 
 // cors
-let corsOptions = null;
-if (process.env.NODE_ENV === 'production') {
-    const corsOptions = {
-        origin: 'http://10.110.0.3',
-        optionsSuccessStatus: 200
-    };
-}
-app.use(cors(corsOptions));
+// let corsOptions = null;
+// if (process.env.NODE_ENV === 'production') {
+//     const corsOptions = {
+//         origin: 'http://10.110.0.3',
+//         optionsSuccessStatus: 200
+//     };
+// }
+// app.use(cors(corsOptions));
+
+app.use(cors());
 
 // define body parser
 app.use(express.json());
