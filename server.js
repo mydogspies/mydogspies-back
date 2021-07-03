@@ -30,7 +30,7 @@ const app = express();
 // }
 
 const corsOptions = {
-    origin: 'https:mydogspies.com',
+    origin: '*',
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
