@@ -12,8 +12,12 @@ const authenticationRequired = (req, res, next) => {
     const expectedAudience = 'api://default';
 
     if (!match) {
-        res.status(401);
-        return next('Unauthorized');
+        // res.status(401);
+        const error = {
+            statusCode: 401,
+            message: 'No access to this api'
+        };
+        return next(error);
     }
 
     const accessToken = match[1];

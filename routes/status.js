@@ -10,7 +10,7 @@ const router = express.Router();
 
 router
     .route('/')
-    .get(getServerStatus, authenticationRequired)
-    .put(updateServerStatus, authenticationRequired);
+    .get(authenticationRequired, getServerStatus)
+    .put(updateServerStatus);
 
 module.exports = router;
