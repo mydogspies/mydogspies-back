@@ -1,5 +1,5 @@
 const express = require('express');
-const authenticationRequired = require('/middleware/okta_auth');
+const authenticationRequired = require('../middleware/okta_auth');
 
 const {
     getServerStatus,
