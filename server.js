@@ -5,9 +5,14 @@ const morgan = require('morgan');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
-const helmet = require("helmet");
+const helmet = require('helmet');
+const authenticationRequired = require('/middleware/okta_auth');
 
-// test stuff 12345
+// Okta auth
+const OktaJwtVerifier = require('@okta/jwt-verifier');
+const oktaJwtVerifier = new OktaJwtVerifier({
+    issuer: 'https://${dev-77974508.okta.com}/oauth2/default' // required
+});
 
 // load env vars
 dotenv.config({path: './config/config.env'});
@@ -20,6 +25,9 @@ const status = require('./routes/status');
 
 // define express app
 const app = express();
+
+// okta auth
+app.all('*', authenticationRequired);
 
 // helmet for some header security
 app.use(helmet());
