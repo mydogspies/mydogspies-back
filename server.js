@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
 
 // test stuff 12345
 
@@ -40,6 +42,21 @@ app.use(express.json());
 
 // http logging during development
 app.use(morgan('short'));
+
+// auth0
+var jwtCheck = jwt({
+    secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: 'https://mydogspies.eu.auth0.com/.well-known/jwks.json'
+    }),
+    audience: 'https://api.mydogspies.com',
+    issuer: 'https://mydogspies.eu.auth0.com/',
+    algorithms: ['RS256']
+});
+
+app.use(jwtCheck);
 
 // mount routers
 app.use('/api/v1/status', status);
