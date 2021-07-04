@@ -20,7 +20,7 @@ const status = require('./routes/status');
 const app = express();
 
 // helmet for some header security
-app.use(helmet());
+//  app.use(helmet());
 
 //cors
 app.use(cors);
