@@ -5,8 +5,7 @@ const morgan = require('morgan');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
-const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
+const helmet = require("helmet");
 
 // test stuff 12345
 
@@ -22,6 +21,9 @@ const status = require('./routes/status');
 // define express app
 const app = express();
 
+// helmet for some header security
+app.use(helmet());
+
 // cors
 // if (process.env.NODE_ENV === 'production') {
 //     const corsOptions = {
@@ -31,32 +33,11 @@ const app = express();
 //     app.use(cors(corsOptions));
 // }
 
-const corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-
 // define body parser
 app.use(express.json());
 
 // http logging during development
 app.use(morgan('short'));
-
-// auth0
-var jwtCheck = jwt({
-    secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: 'https://mydogspies.eu.auth0.com/.well-known/jwks.json'
-    }),
-    audience: 'https://api.mydogspies.com',
-    issuer: 'https://mydogspies.eu.auth0.com/',
-    algorithms: ['RS256']
-});
-
-app.use(jwtCheck);
 
 // mount routers
 app.use('/api/v1/status', status);
