@@ -4,6 +4,7 @@ const db = require('../models/');
 const SiteStatus = db.SiteStatus;
 const Op = db.Sequelize.Op;
 
+
 // @desc    Get server status
 // @route   GET /api/v1/status
 // @access  Public

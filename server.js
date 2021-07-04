@@ -6,7 +6,6 @@ const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
 const helmet = require('helmet');
-const authenticationRequired = require('./middleware/okta_auth');
 
 // load env vars
 dotenv.config({path: './config/config.env'});
@@ -19,9 +18,6 @@ const status = require('./routes/status');
 
 // define express app
 const app = express();
-
-//okta
-app.all('*', authenticationRequired);
 
 // helmet for some header security
 app.use(helmet());
