@@ -6,13 +6,6 @@ const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
 const helmet = require('helmet');
-const authenticationRequired = require('/middleware/okta_auth');
-
-// Okta auth
-const OktaJwtVerifier = require('@okta/jwt-verifier');
-const oktaJwtVerifier = new OktaJwtVerifier({
-    issuer: 'https://${dev-77974508.okta.com}/oauth2/default' // required
-});
 
 // load env vars
 dotenv.config({path: './config/config.env'});
@@ -26,20 +19,11 @@ const status = require('./routes/status');
 // define express app
 const app = express();
 
-// okta auth
-app.all('*', authenticationRequired);
-
 // helmet for some header security
 app.use(helmet());
 
-// cors
-// if (process.env.NODE_ENV === 'production') {
-//     const corsOptions = {
-//         origin: 'http://localhost:3007',
-//         optionsSuccessStatus: 200
-//     };
-//     app.use(cors(corsOptions));
-// }
+//cors
+app.use(cors);
 
 // define body parser
 app.use(express.json());

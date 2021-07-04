@@ -1,3 +1,9 @@
+const OktaJwtVerifier = require('@okta/jwt-verifier');
+
+const oktaJwtVerifier = new OktaJwtVerifier({
+    issuer: 'https://${dev-77974508.okta.com}/oauth2/default' // required
+});
+
 const authenticationRequired = (req, res, next) => {
 
     const authHeader = req.headers.authorization || '';
@@ -24,4 +30,4 @@ const authenticationRequired = (req, res, next) => {
 
 }
 
-module.exports = authenticationRequired();
+module.exports = authenticationRequired;
