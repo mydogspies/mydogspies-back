@@ -5,7 +5,8 @@ const morgan = require('morgan');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
-const helmet = require('helmet');
+
+// test stuff 1234
 
 // load env vars
 dotenv.config({path: './config/config.env'});
@@ -19,11 +20,15 @@ const status = require('./routes/status');
 // define express app
 const app = express();
 
-// helmet for some header security
-app.use(helmet());
-
-//cors
-app.use(cors);
+// cors
+let corsOptions = null;
+if (process.env.NODE_ENV === 'production') {
+    corsOptions = {
+        origin: 'http://10.110.0.3',
+        optionsSuccessStatus: 200
+    };
+}
+app.use(cors(corsOptions));
 
 // define body parser
 app.use(express.json());
