@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const db = require('./models');
+const helmet = require('helmet');
 
 // test stuff 1234
 
@@ -29,6 +30,9 @@ const app = express();
 //     };
 // }
 app.use(cors());
+
+// helmet
+app.use(helmet());
 
 // define body parser
 app.use(express.json());
