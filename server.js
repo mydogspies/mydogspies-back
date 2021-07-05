@@ -21,14 +21,7 @@ const status = require('./routes/status');
 // define express app
 const app = express();
 
-// cors
-// let corsOptions = null;
-// if (process.env.NODE_ENV === 'production') {
-//     corsOptions = {
-//         origin: 'http://10.110.0.3',
-//         optionsSuccessStatus: 200
-//     };
-// }
+//cors
 app.use(cors());
 
 // helmet
