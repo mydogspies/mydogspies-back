@@ -1,7 +1,7 @@
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 
 const oktaJwtVerifier = new OktaJwtVerifier({
-    issuer: 'https://${dev-77974508.okta.com}/oauth2/default' // required
+    issuer: process.env.ISSUER // required
 });
 
 const authenticationRequired = (req, res, next) => {
