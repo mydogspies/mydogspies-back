@@ -7,7 +7,7 @@ const Op = db.Sequelize.Op;
 
 // @desc    Get server status
 // @route   GET /api/v1/status
-// @access  Public
+// @access  Private
 exports.getServerStatus = asyncHandler(async (req, res, next) => {
     await SiteStatus.findAll().then(data=> {
         res.status(200).json({
