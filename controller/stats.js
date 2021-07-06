@@ -12,7 +12,7 @@ exports.getServerStats = asyncHandler(async (req, res, next) => {
     await ServerStats.findAll().then(data=> {
         res.status(200).json({
             success: true,
-            serverDate: data[0].dataValues.serverDate
+            serverDate: data[0].serverDate
         });
     });
 });
