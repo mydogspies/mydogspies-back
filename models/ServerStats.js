@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         serverDate: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: new Date()
         },
 
 
