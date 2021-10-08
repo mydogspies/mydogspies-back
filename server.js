@@ -40,6 +40,7 @@ db.sequelize.sync();
 
 // import the routes
 const status = require('./routes/status');
+const sessions = require('./routes/sessions');
 
 // define express app
 const app = express();
@@ -65,6 +66,7 @@ app.use(morgan('short'));
 
 // mount routers
 app.use('/api/v1/status', status);
+app.use('api/v1/create-session', sessions);
 
 // supertokens error handler
 app.use(errorHandler);
