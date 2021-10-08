@@ -1,13 +1,13 @@
 const express = require('express');
 
 const {
-    setSession
+    createSession
 } = require('../controller/sessions');
 
 const router = express.Router();
 
 router
     .route('/')
-    .post(setSession);
+    .post(createSession);
 
 module.exports = router;
