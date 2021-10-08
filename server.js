@@ -16,14 +16,14 @@ supertokens.init({
     framework: "express",
     supertokens: {
         // These are the connection details of the app you created on supertokens.io
-        connectionURI: "https://a5b0b8c1285b11ecb62d0bb2c7f955a0-eu-west-1.aws.supertokens.io:3571",
-        apiKey: "UcNIFhqAmpVZenZ4BpZN9anl8uoD=P",
+        connectionURI: process.env.SUPERTOKEN_CONNECTION_API,
+        apiKey: process.env.SUPERTOKEN_APIKEY,
     },
     appInfo: {
         // learn more about this on https://supertokens.io/docs/session/appinfo
-        appName: "Mydogspies",
-        apiDomain: "https://api.mydogspies.com",
-        websiteDomain: "https://mydogspies.com"
+        appName: process.env.AUTH_APP_NAME,
+        apiDomain: process.env.AUTH_API_DOMAIN,
+        websiteDomain: process.env.AUTH_WEBSITE_DOMAIN
     },
     recipeList: [
         Session.init()
