@@ -12,6 +12,9 @@ let Session = require("supertokens-node/recipe/session");
 let {middleware} = require("supertokens-node/framework/express");
 let {errorHandler} = require("supertokens-node/framework/express");
 
+// load env vars
+dotenv.config({path: './config/config.env'});
+
 supertokens.init({
     framework: "express",
     supertokens: {
@@ -29,11 +32,6 @@ supertokens.init({
         Session.init()
     ]
 });
-
-// test stuff 1234
-
-// load env vars
-dotenv.config({path: './config/config.env'});
 
 // connect to db
 db.sequelize.sync();
