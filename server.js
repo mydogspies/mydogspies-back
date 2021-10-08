@@ -3,9 +3,32 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
-const errorHandler = require('./middleware/error');
+// const errorHandler = require('./middleware/error');
 const db = require('./models');
 const helmet = require('helmet');
+
+let supertokens = require("supertokens-node");
+let Session = require("supertokens-node/recipe/session");
+let {middleware} = require("supertokens-node/framework/express");
+let {errorHandler} = require("supertokens-node/framework/express");
+
+supertokens.init({
+    framework: "express",
+    supertokens: {
+        // These are the connection details of the app you created on supertokens.io
+        connectionURI: "https://a5b0b8c1285b11ecb62d0bb2c7f955a0-eu-west-1.aws.supertokens.io:3571",
+        apiKey: "UcNIFhqAmpVZenZ4BpZN9anl8uoD=P",
+    },
+    appInfo: {
+        // learn more about this on https://supertokens.io/docs/session/appinfo
+        appName: "Mydogspies",
+        apiDomain: "https://api.mydogspies.com",
+        websiteDomain: "http://localhost:3007"
+    },
+    recipeList: [
+        Session.init()
+    ]
+});
 
 // test stuff 1234
 
@@ -21,8 +44,15 @@ const status = require('./routes/status');
 // define express app
 const app = express();
 
-//cors
-app.use(cors());
+// cors
+app.use(cors({
+    origin: "http://localhost:3007",
+    allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()],
+    credentials: true,
+}));
+
+// supertokens
+app.use(middleware());
 
 // helmet
 app.use(helmet());
@@ -36,7 +66,7 @@ app.use(morgan('short'));
 // mount routers
 app.use('/api/v1/status', status);
 
-// error handler
+// supertokens error handler
 app.use(errorHandler);
 
 // server start
