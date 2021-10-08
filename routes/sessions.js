@@ -7,7 +7,7 @@ const {
 const router = express.Router();
 
 router
-    .route('/create-session')
+    .route('/')
     .post(setSession);
 
 module.exports = router;
