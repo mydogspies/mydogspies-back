@@ -23,7 +23,7 @@ supertokens.init({
         // learn more about this on https://supertokens.io/docs/session/appinfo
         appName: "Mydogspies",
         apiDomain: "https://api.mydogspies.com",
-        websiteDomain: "http://localhost:3007"
+        websiteDomain: "https://mydogspies.com"
     },
     recipeList: [
         Session.init()
