@@ -45,7 +45,7 @@ const app = express();
 
 // cors
 app.use(cors({
-    origin: "http://localhost:3007",
+    origin: process.env.AUTH_WEBSITE_DOMAIN,
     allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()],
     credentials: true,
 }));
