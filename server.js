@@ -15,11 +15,13 @@ let {errorHandler} = require("supertokens-node/framework/express");
 // load env vars
 dotenv.config({path: './config/config.env'});
 
+
+
 supertokens.init({
     framework: "express",
     supertokens: {
         // These are the connection details of the app you created on supertokens.io
-        connectionURI: process.env.SUPERTOKEN_CONNECTION_API,
+        connectionURI: process.env.SUPERTOKEN_CONNECTION_URI,
         apiKey: process.env.SUPERTOKEN_APIKEY,
     },
     appInfo: {
