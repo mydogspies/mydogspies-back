@@ -66,7 +66,7 @@ app.use(morgan('short'));
 
 // mount routers
 app.use('/api/v1/status', status);
-app.use('api/v1/create-session', sessions);
+app.use('/api/v1/create-session', sessions);
 
 // supertokens error handler
 app.use(errorHandler);
