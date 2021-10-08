@@ -17,7 +17,6 @@ db.sequelize.sync();
 
 // import the routes
 const status = require('./routes/status');
-const stats = require('./routes/stats');
 
 // define express app
 const app = express();
@@ -36,7 +35,6 @@ app.use(morgan('short'));
 
 // mount routers
 app.use('/api/v1/status', status);
-app.use('/api/v1/stats', stats)
 
 // error handler
 app.use(errorHandler);

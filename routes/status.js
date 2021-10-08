@@ -1,16 +1,13 @@
 const express = require('express');
-const authenticationRequired = require('../middleware/oktaAuthentication');
 
 const {
-    getServerStatus,
-    updateServerStatus
+    getServerStatus
 } = require('../controller/status');
 
 const router = express.Router();
 
 router
     .route('/')
-    .get(authenticationRequired, getServerStatus)
-    .put(authenticationRequired, updateServerStatus);
+    .get(getServerStatus);
 
 module.exports = router;

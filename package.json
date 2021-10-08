@@ -11,7 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@okta/jwt-verifier": "^2.2.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -23,6 +22,6 @@
     "nodemon": "^2.0.7",
     "path": "^0.12.7",
     "sequelize": "^6.6.2",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^5.0.0"
   }
 }
