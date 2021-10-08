@@ -3,7 +3,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
-// const errorHandler = require('./middleware/error');
 const db = require('./models');
 const helmet = require('helmet');
 
